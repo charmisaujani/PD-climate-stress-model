@@ -4,7 +4,7 @@ This project analyzes credit risk under NGFS climate transition scenarios using 
 
 ## 📁 Files
 
-- `pd_climate_stress_test.py`: Main script that loads scenario data, extracts macro & transition variables, and calculates projected PDs.
+- `pd_climate_stress_test.ipynb`: Jupyter Notebook that loads scenario data, extracts macro & transition variables, and calculates projected PDs.
 - `Downscaled_REMIND-MAgPIE...xlsx`: IAM climate scenario data.
 - `NiGEM_data.xlsx`: Macroeconomic data by country and scenario.
   
