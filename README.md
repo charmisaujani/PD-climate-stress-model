@@ -1,36 +1,61 @@
 # Climate Scenario PD Stress Test
 
-This project analyzes credit risk under NGFS climate transition scenarios using downscaled data from IAM models (like REMIND-MAgPIE) and macroeconomic projections (NiGEM). The output simulates future Probabilities of Default (PD) for selected sectors under different climate transition scenarios.
+This project analyzes credit risk under NGFS climate transition scenarios using downscaled data from Integrated Assessment Models (IAMs) like REMIND-MAgPIE, combined with macroeconomic projections from NiGEM. The output simulates future Probabilities of Default (PD) for selected sectors under different climate transition scenarios.
 
-## 📁 Files
+---
 
-- `pd_climate_stress_test.ipynb`: Jupyter Notebook that loads scenario data, extracts macro & transition variables, and calculates projected PDs.
-- `Downscaled_REMIND-MAgPIE...xlsx`: IAM climate scenario data.
-- `NiGEM_data.xlsx`: Macroeconomic data by country and scenario.
-  
-## 📊 What the Script Does
+## Files
 
-1. **Loads climate transition data** (e.g., carbon price, emissions)
-2. **Loads macroeconomic data** (e.g., GDP projections from NiGEM)
-3. **Selects scenarios** (e.g., Net Zero 2050, Delayed Transition)
-4. **Calculates PD shocks** using:
+- **`pd_climate_stress_test.ipynb`**  
+  Jupyter Notebook that loads scenario data, extracts macro & transition variables, and calculates projected PDs using both linear and logit models.
 
-    PD_new = PD_base × (1 + β_macro × GDP_shock + β_carbon × Carbon_price_increase)
+- **`Downscaled_REMIND-MAgPIE...xlsx`**  
+  IAM climate scenario data.
 
-## Assumptions
+- **`NiGEM_data.xlsx`**  
+  Macroeconomic data by country and scenario.
 
-- `β_macro` and `β_carbon` are fixed sensitivities to macro & transition risk.
-- GDP shock is calculated as relative drop from baseline year.
-- Carbon price is assumed to reflect sectoral stress for energy-intensive industries.
-- The model is linear for simplicity and transparency.
+---
 
-## Example Use Case
+## What the Script Does
 
-You can adapt this framework to stress test:
-- Real Estate sector (GDP-driven)
-- Utilities / Energy (Carbon price-driven)
+- Loads climate transition data (e.g., carbon price, emissions)  
+- Loads macroeconomic data (e.g., GDP projections from NiGEM)  
+- Selects climate scenarios (e.g., Net Zero 2050, Delayed Transition)  
 
-Or expand to:
-- Country-specific stress
-- Sectoral portfolios
-- LGD/EAD interaction
+Calculates projected PD shocks using two alternative models:
+
+### 1. Linear Model
+
+logit(PD_new) = logit(PD_base) + β_macro × GDP_shock + β_carbon × Carbon_price_increase + β_emissions × Emissions_growth
+
+
+Where:
+
+- `logit(p) = log(p / (1 - p))`  
+- `Emissions_growth = (Emissions_scenario - Emissions_baseline) / Emissions_baseline`
+
+---
+
+## 🔧 Assumptions
+
+- `β_macro`, `β_carbon`, and `β_emissions` are fixed sensitivities representing exposure to macroeconomic, transition, and emissions-related risks.
+- GDP shock is calculated as a relative deviation from a scenario baseline year.
+- Carbon price is used as a proxy for transition-related stress, particularly in energy-intensive sectors.
+- The linear model is simple and transparent.
+- The logit model ensures projected PDs remain in the valid [0, 1] probability range and incorporates emissions dynamics.
+
+---
+
+## 💼 Example Use Cases
+
+This framework can be adapted to stress test:
+
+- **Real Estate sector** – sensitive to GDP decline  
+- **Utilities / Energy sector** – sensitive to carbon price and emissions growth  
+
+The model can eb extended to:
+
+- **Country-specific analysis**  
+- **Sectoral portfolio simulations**  
+- **Integrated credit risk modeling** including LGD (Loss Given Default) and EAD (Exposure at Default)
