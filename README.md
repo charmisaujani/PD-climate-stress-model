@@ -27,6 +27,11 @@ Calculates projected PD shocks using two alternative models:
 
 ### 1. Linear Model
 
+PD_new = PD_base × (1 + β_macro × GDP_shock + β_carbon × Carbon_price_increase)
+
+
+### 2. Logit-Transformed Model
+
 logit(PD_new) = logit(PD_base) + β_macro × GDP_shock + β_carbon × Carbon_price_increase + β_emissions × Emissions_growth
 
 
