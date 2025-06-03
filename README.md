@@ -42,7 +42,7 @@ Where:
 
 ---
 
-## 🔧 Assumptions
+## Assumptions
 
 - `β_macro`, `β_carbon`, and `β_emissions` are fixed sensitivities representing exposure to macroeconomic, transition, and emissions-related risks.
 - GDP shock is calculated as a relative deviation from a scenario baseline year.
@@ -52,7 +52,7 @@ Where:
 
 ---
 
-## 💼 Example Use Cases
+## Example Use Cases
 
 This framework can be adapted to stress test:
 
