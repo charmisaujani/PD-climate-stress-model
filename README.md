@@ -15,9 +15,7 @@ This project analyzes credit risk under NGFS climate transition scenarios using 
 3. **Selects scenarios** (e.g., Net Zero 2050, Delayed Transition)
 4. **Calculates PD shocks** using:
 
-    \[
-    \text{PD}_{\text{new}} = \text{PD}_{\text{base}} \cdot (1 + \beta_{\text{macro}} \cdot \text{GDP shock} + \beta_{\text{carbon}} \cdot \text{Carbon price increase})
-    \]
+    PD_new = PD_base × (1 + β_macro × GDP_shock + β_carbon × Carbon_price_increase)
 
 ## Assumptions
 
